@@ -17,25 +17,35 @@ export default {
 </script>
 
 <style>
-html{
+html {
   font-family: Arial, Helvetica, sans-serif;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
-body{
+
+body {
   background-color: rgb(51, 45, 62);
-  color:white;
-  margin:0;
+  color: white;
+  margin: 0;
 }
+
 .full-page {
   width: 100%;
   height: calc(100svh - 60px);
-  background-color: inherit;
   background-image: url('/public/resources/rubick-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   color: inherit;
   display: flex;
   flex-direction: row;
+  background-attachment: fixed;
+}
+
+@media (max-width:850px) {
+  .full-page {
+    height: auto;
+    min-height: calc(100svh - 60px);
+    background-position-x: 70%;
+  }
 }
 </style>

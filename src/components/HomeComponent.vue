@@ -36,7 +36,7 @@
           <div v-for="(match, index) in matchesWithHeroIcons" :key="index" class="match">
             <div class="match-row">
               <div class="match-row-hero">
-                <span class="header-hero"><img :src="match.heroIcon" :alt="match.hero_id"></span>
+                <span><img :src="match.heroIcon" :alt="match.hero_id"></span>
                 <div class="flex-column">
                   <span class="hero-name">{{ match.heroName }}</span>
                   <small class="match-time-ago">{{ formatTimeAgo(match.start_time) }}</small>
@@ -61,8 +61,6 @@
       </div>
     </div>
 
-    <div class="bg-img">
-    </div>
 </template>
 
 <script>
@@ -337,18 +335,18 @@ svg {
 }
 
 .sidebar-matches::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(13, 126, 0, 0.5);
   /* Color de la barra */
   border-radius: 6px;
 }
 
 .sidebar-matches::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 54, 5, 0.8);
   /* Color al pasar el cursor */
 }
 
 .sidebar-matches::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(13, 255, 0, 0.053);
   /* Color del track */
 }
 
@@ -359,6 +357,7 @@ svg {
   height: 70svh;
   margin-top: 50px;
   margin-left: 50px;
+  
 }
 .sidebar{
   height: 100%;
@@ -372,5 +371,43 @@ svg {
 img {
   height: 100%;
   object-fit: contain;
+}
+
+@media (max-width:850px){
+  .left{
+    width:100%;
+    height: calc(100svh - 80px);
+    margin: 10px auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  }
+  .sidebar{
+    padding-top: 10px;
+  }
+  .sidebar-matches{
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow: auto;
+  }
+  .matches-header{
+    gap:5px;
+  }
+  .header-hero img{
+    max-width:100%;
+    object-fit: cover;
+  }
+  .header-kda, .header-duration, .header-result, .header-row-kda, .match-duration, .match-result{
+    width: 15%;
+  }
+  .header-duration{
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header-hero{
+    width:55%;
+  }
+  .match-row-hero{
+    width:calc(55% + 10px);
+  }
 }
 </style>

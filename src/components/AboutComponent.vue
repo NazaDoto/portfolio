@@ -5,54 +5,65 @@
                 <img class="profile-pic" src="../../public/resources/yo.png" alt="">
                 <div class="info">
                     <span class="name">Nazareno Navarrete</span>
-                    <span class="title">SYSTEMS ANALYST</span>
+                    <span class="title">DEVELOPER</span>
+                </div>
+                <div class="links">
+                    <a href="https://wa.me/5493855223287" target="_blank" class="nav-opt-item nav-item"><img
+                            class="nav-opt-img" src="/resources/whatsapp.png" alt=""></a>
+                    <a href="https://linkedin.com/in/nazadoto" target="_blank" class="nav-opt-item nav-item"><img
+                            class="nav-opt-img" src="/resources/linkedin.png" alt=""></a>
+                    <a href="https://github.com/nazadoto" target="_blank" class="nav-opt-item nav-item"><img
+                            class="nav-opt-img" src="/resources/github.png" alt=""></a>
                 </div>
             </div>
+
+            <div class="technologies item">
+                TECHNOLOGIES
+                <div class="radar-chart">
+                    <div class="radar-background">
+                    </div>
+                    <svg class="radar-data" viewBox="0 0 200 200">
+                        <polygon points="100,45 150,75 130,145 65,130 60,75" />
+                        <!-- Labels -->
+                        <text x="100" y="25" class="radar-label">HTML5</text>
+                        <text x="175" y="75" class="radar-label">CSS</text>
+                        <text x="145" y="160" class="radar-label">JS</text>
+                        <text x="45" y="160" class="radar-label">JAVA</text>
+                        <text x="30" y="75" class="radar-label">PY</text>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+        <div class="container-right">
             <div class="cover item">
-                I am an Information Systems Analyst and Fullstack Developer, seeking a position to grow my expertise in
-                web development.
+                Hello, I’m from Santiago del Estero, Argentina, and I’m an Information Systems Analyst and Fullstack
+                Developer.
+
+                Building innovative and efficient web solutions is what excites me the most, and I’m always eager to
+                explore new tools and techniques to enhance my work.
+            </div>
+            <div class="education item">
+                EDUCATION
+                <div class="education-content">
+                    <ul>
+                        <li><strong>Bachelor's in Social Sciences and Humanities:</strong> Colegio San José (2012–2016)
+                        </li>
+                        <li><strong>Cambridge English Advanced:</strong> CEFR: C1 Advanced (2019)</li>
+                        <li><strong>Information Systems Analyst Degree:</strong> Universidad Nacional de Santiago del
+                            Estero
+                            (2017–2024)</li>
+                        <li><strong>Bachelor's in Information Systems:</strong> Universidad Nacional de Santiago del
+                            Estero
+                            (2025)</li>
+                    </ul>
+                </div>
             </div>
             <div class="languages item">
                 LANGUAGES <ul>
                     <li><strong>Spanish:</strong> Native</li>
                     <li><strong>English:</strong> Professional (CEFR: C1 Advanced)</li>
                 </ul>
-            </div>
-        </div>
-        <div class="container-right">
-            <div class="education item">
-                EDUCATION
-                <ul>
-                    <li><strong>Bachelor's in Social Sciences and Humanities:</strong> Colegio San José (2012–2016)</li>
-                    <li><strong>Cambridge English Advanced:</strong> CEFR: C1 Advanced (2019)</li>
-                    <li><strong>Information Systems Analyst Degree:</strong> Universidad Nacional de Santiago del Estero
-                        (2017–2024)</li>
-                    <li><strong>Bachelor's in Information Systems:</strong> Universidad Nacional de Santiago del Estero
-                        (2025)</li>
-                </ul>
-            </div>
-            <div class="technologies item">
-                TECHNOLOGIES
-                <div class="radar-chart">
-                    <!-- Lines and Areas -->
-                    <div class="radar-background"></div>
-                    <!-- Labels -->
-
-                    <!-- Polygon (Your Data) -->
-                    <svg class="radar-data" viewBox="0 0 200 200">
-                        <polygon points="100,30 160,70 140,140 100,170 60,100" />
-                    </svg>
-                </div>
-                <div class="radar-label" style="top: 0%; left: 50%; transform: translate(-50%, -50%);">
-                    Versatility</div>
-                <div class="radar-label" style="top: 20%; left: 85%; transform: translate(-50%, -50%);">Farming
-                </div>
-                <div class="radar-label" style="top: 70%; left: 85%; transform: translate(-50%, -50%);">
-                    Teamfight</div>
-                <div class="radar-label" style="top: 100%; left: 50%; transform: translate(-50%, -50%);">Pushing
-                </div>
-                <div class="radar-label" style="top: 70%; left: 15%; transform: translate(-50%, -50%);">Support
-                </div>
             </div>
         </div>
     </div>
@@ -63,6 +74,13 @@ export default {};
 </script>
 
 <style scoped>
+.links{
+    display:none;
+}
+li {
+    margin-top: 2px;
+}
+
 .radar-chart-container {
     display: flex;
     justify-content: center;
@@ -74,33 +92,33 @@ export default {};
 
 .radar-chart {
     position: relative;
-    height: 90%;
-    clip-path: circle(20%);
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .radar-background {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
     background: conic-gradient(rgba(0, 128, 255, 0.2) 72deg,
             rgba(0, 128, 255, .2));
 }
 
 .radar-label {
-    position: absolute;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 12px;
+    fill: white;
+    stroke: white;
+    stroke-width: 0;
+    text-anchor: middle;
 }
 
 .radar-data {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     fill: rgba(0, 128, 255, 0.5);
     stroke: rgba(0, 128, 255, 0.8);
     stroke-width: 2;
@@ -111,44 +129,36 @@ export default {};
     display: flex;
     gap: 15px;
     margin: 50px 0;
-    padding: 0 50px 0 20svw;
+    padding: 15px 15svw;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Fondo semitransparente */
     border-radius: 10px;
-    /* Bordes redondeados para mejor estética */
     color: white;
-    /* Asegúrate de que el texto sea legible */
     backdrop-filter: blur(2px);
-    /* Blur aplicado al fondo */
     -webkit-backdrop-filter: blur(2px);
-    /* Soporte para navegadores basados en WebKit */
 }
 
 .container-left {
-    min-width: 250px;
+    min-width: 375px;
     max-width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     gap: 15px;
+    height: 100%;
 }
 
 .container-right {
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: space-evenly;
     gap: 15px;
     width: 70%;
 }
 
 .item {
     background-color: rgba(0, 0, 0, 0.2);
-    /* Fondo semitransparente */
     backdrop-filter: blur(2px);
-    /* Blur aplicado al fondo */
     -webkit-backdrop-filter: blur(2px);
-    /* Soporte para navegadores basados en WebKit */
     border-radius: 5px;
     padding: 10px;
 }
@@ -156,10 +166,12 @@ export default {};
 .img {
     display: flex;
     gap: 10px;
+    height: 100%;
 }
 
 .profile-pic {
     width: 150px;
+    height: 150px;
     background: white;
     border-radius: 2px;
     border: solid white 1px;
@@ -183,10 +195,112 @@ export default {};
 .cover {}
 
 .education {
-    margin-top: 15px;
+    height: 100%;
+}
+
+.education-content {
+    height: 80%;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.education-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.education-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+}
+
+.education-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.education-content::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .technologies {
-    height: 100%;
+    position: relative;
+}
+
+@media (max-width: 1175px) {
+    .container {
+        padding: 15px 5svw;
+    }
+
+}
+
+@media (max-width:850px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+        border-radius: 0;
+        margin-top: 10px;
+    }
+
+    .container-left {
+        min-width: 0;
+        max-width: none;
+    }
+
+    .technologies,
+    .item {
+        width: auto;
+    }
+
+    .container-left,
+    .container-right {
+        width: 100%;
+        flex-direction: column;
+        margin: auto;
+        padding: 0;
+    }
+
+    .img {
+        width: calc(100% - 10px);
+        padding: 0 5px;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .name {
+        width: 50%;
+        font-size: 2rem;
+        line-break: strict;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    .links{
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-opt-img{
+        width: 30px;
+        height: 30px;
+        filter: invert(100%) brightness(1);
+    }
+    .nav-opt-img:hover{
+        filter: invert(100%) brightness(2);
+
+    }
+    .cover{
+        padding: 10px 10%;
+        text-align: justify;
+    }
+    .education-content{
+        height: 100%;
+    }
+    .item{
+        border-radius: 0;
+    }
 }
 </style>

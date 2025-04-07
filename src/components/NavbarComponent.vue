@@ -8,12 +8,12 @@
                     <img src="/resources/logo.png" alt="" class="nav-logo">
                 </div>
             </router-link>
-            <router-link class="nav-left-item nav-item" :class="{ 'active': $route.path === '/about' }"
-                to="/about"><span class="mauto">ABOUT</span></router-link>
-            <router-link class="nav-left-item nav-item push-left" :class="{ 'active': $route.path === '/experience' }"
-                to="/experience"><span class="mauto">EXPERIENCE</span></router-link>
-            <router-link class="nav-left-item nav-item push-left-" :class="{ 'active': $route.path === '/projects' }"
-                to="/projects"><span class="mauto">PROJECTS</span></router-link>
+            <router-link id="about-content" class="nav-left-item nav-item" :class="{ 'active': $route.path === '/about' }"
+                to="/about"><span class="mauto" >ABOUT</span></router-link>
+            <router-link id="exp-content" class="nav-left-item nav-item push-left" :class="{ 'active': $route.path === '/experience' }"
+                to="/experience"><span class="mauto" >EXPERIENCE</span></router-link>
+            <router-link id="projects-content" class="nav-left-item nav-item push-left-" :class="{ 'active': $route.path === '/projects' }"
+                to="/projects"><span class="mauto" >PROJECTS</span></router-link>
         </div>
         <div class="nav-right">
             <a href="https://wa.me/5493855223287" target="_blank"  class="nav-opt-item nav-item"><img class="nav-opt-img" src="/resources/whatsapp.png" alt=""></a>
@@ -166,6 +166,8 @@ export default {
 }
 
 .nav-logo {
+    border-radius: 100%;
+    height: calc(100% - 10px);
     z-index: 4;
 }
 
@@ -245,18 +247,19 @@ ul {
     display: flex;
     margin: 0;
     height: 100%;
-    padding: 0 20px;
+    width: 80%;
+    padding: 0 0 0 20px;
 }
 
 .nav-left-item {
     position: relative;
     display: flex;
     height: 100%;
-    width: 200px;
+    width:200px;
+    max-width: 200px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: larger;
-    color: grey;
-    
+    color: grey;    
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
 
@@ -284,9 +287,72 @@ ul {
 
 .nav-right {
     display: flex;
+    justify-content: end;
     margin-top: 0;
-    margin-left: auto;
     height: 100%;
+    width: 20%;
 }
+@media (max-width: 1175px){
+    .nav-opt-item{
+        width: fit-content;
+    }
+  }
 
+@media (max-width: 850px){
+    .nav-dota{
+        width: 100%;
+    }
+    .nav-logo{
+        width: calc(100% - 10px);
+        height: auto;
+    }
+    .nav-dota{
+        padding: 0;
+    }
+    .nav-left{
+        width: 100%;
+        padding:0;
+    }
+    .container-logo, .container-logo-outer{
+        width: 100px;
+    }
+    .container-logo-inner{
+        width: 70px;
+    }
+    .nav-right{
+        display:none;
+        width: 0;
+    }
+    .nav-left-item.active::after{
+        width: 200px;
+    }
+}
+@media (max-width:550px){
+    .nav-left{
+        width: 100%;
+        padding:0;
+    }
+    .container-logo, .container-logo-outer{
+        width: 50px;
+        height: 65px;
+    }
+    .container-logo-inner{
+        width: 40px;
+    }
+    #about-content{
+        min-width: 70px;
+    }
+    #exp-content{
+        min-width:130px;
+    }
+    #projects-content{
+        min-width:110px;
+    }
+    .push-left{
+        left:-5px;
+    }
+    .push-left-{
+        left:-15px;
+    }
+}
 </style>
