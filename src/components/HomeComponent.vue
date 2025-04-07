@@ -20,7 +20,7 @@
                 </svg></a>
             </div>
           </div>
-          <div class="dota-rank"><img src="public/resources/immortal.png" height="100" width="100" alt=""></div>
+          <div class="dota-rank"><img src="/resources/immortal.png" height="100" width="100" alt=""></div>
         </div>
         <div class="matches-header">
           <span class="header-hero">HERO</span>
