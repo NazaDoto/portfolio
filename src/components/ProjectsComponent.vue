@@ -1,5 +1,8 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+
+    <a href="/puestito-online">Puestito Online</a>
+  </div>
 </template>
 
 <script>
