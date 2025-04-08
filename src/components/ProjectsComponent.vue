@@ -1,14 +1,38 @@
 <template>
   <div class="container">
 
-    <a href="/puestito-online">Puestito Online</a>
+    <div  v-for="project in projects" :key="project.name">
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.description }}</p>
+      <a :href="project.link" target="_blank">Ver Proyecto</a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      projects: [
+        {
+          name: 'Puestito Online',
+          description: 'Plataforma de pedidos mediante QR.',
+          link: '/puestito-online',
+        },
+        {
+          name: 'SNMDS',
+          description: 'Sistema de Notificaciones.',
+          link: '/snmds',
+        },
+        {
+          name: 'SGTS',
+          description: 'Sistema de gestión de tarjetas sociales.',
+          link: '/sgts',
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>
