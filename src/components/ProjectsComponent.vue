@@ -17,17 +17,17 @@ export default {
         {
           name: 'Puestito Online',
           description: 'Plataforma de pedidos mediante QR.',
-          link: 'puestito-online.nazadoto.com',
+          link: 'https://puestito-online.nazadoto.com',
         },
         {
           name: 'SNMDS',
           description: 'Sistema de Notificaciones.',
-          link: 'sn-mds.nazadoto.com',
+          link: 'https://sn-mds.nazadoto.com',
         },
         {
           name: 'SGTS',
           description: 'Sistema de gestión de tarjetas sociales.',
-          link: 'sgts.nazadoto.com',
+          link: 'https://sgts.nazadoto.com',
         },
       ],
     };
