@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-      <h2 class="title">Work Experience</h2>
       <div class="experience-item" v-for="(item, index) in experience" :key="index">
         <div class="experience-year">{{ item.year }}</div>
         <div class="experience-details">
@@ -27,7 +26,7 @@
             position: 'Management of books and magazines database for AMERICANIA publishing house using Excel.',
           },
           {
-            year: '2022 – Present',
+            year: '2022 – Now',
             company: 'IT Technician at Ministerio de Desarrollo Social de Santiago del Estero',
             position: 'IT service (hardware and software maintenance for the employees), structured cabling (cat 6 UTP cable assembly, IP configuration), web application development (control and monitoring of IT supplies using VueJS, ExpressJS, MySQL), database administration (SQL Server).',
           },
@@ -66,11 +65,13 @@
     padding: 10px;
     border: (Some code was cut) 1px solid #444444;
     border-radius: 8px;
-    background: #2e2e2e;
+    background-color: rgba(0, 0, 0, 0.5);
+
   }
   .experience-year {
     font-weight: bold;
     color: #ff5858;
+    text-wrap: nowrap;
   }
   .experience-details {
     flex-grow: 1;

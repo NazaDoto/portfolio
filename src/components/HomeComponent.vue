@@ -1,13 +1,13 @@
 <template>
-    <div class="left">
-      <div v-if="!loadingData" class="sidebar">
-        <div class="sidebar-profile">
-          <div class="profile-header">
-            <img :src="profile.avatarfull" height="100" width="100" alt="">
-            <div class="profile-name">{{ profile.personaname }}
-              <a class="profile-url" :href="profile.profileurl">
-                <svg class="sc-fjdhpX kwMXpV icon" viewBox="0 0 110 110">
-                  <path d="M55,0C25.881,0,2.062,22.634,0.14,51.267l28.525,11.507C31.172,61.029,34.214,60,37.5,60
+  <div class="left">
+    <div v-if="!loadingData" class="sidebar">
+      <div class="sidebar-profile">
+        <div class="profile-header">
+          <img :src="profile.avatarfull" height="100" width="100" alt="">
+          <div class="profile-name">{{ profile.personaname }}
+            <a class="profile-url" :href="profile.profileurl">
+              <svg class="sc-fjdhpX kwMXpV icon" viewBox="0 0 110 110">
+                <path d="M55,0C25.881,0,2.062,22.634,0.14,51.267l28.525,11.507C31.172,61.029,34.214,60,37.5,60
                   c0.706,0,1.396,0.063,2.076,0.155l13.426-19.691C53.021,29.159,62.19,20,73.5,20C84.822,20,94,29.178,94,40.5S84.822,61,73.5,61
                   c-0.01,0-0.021-0.001-0.031-0.001L52.944,74.385C52.97,74.754,53,75.124,53,75.5C53,84.061,46.061,91,37.5,91
                   c-7.565,0-13.855-5.422-15.218-12.591L2.118,70.107C8.685,93.134,29.866,110,55,110c30.376,0,55-24.624,55-55
@@ -17,49 +17,50 @@
       C44.131,69.368,46,72.213,46,75.5C46,80.194,42.194,84,37.5,84z M88,40.5C88,32.492,81.508,26,73.5,26S59,32.492,59,40.5
       S65.492,55,73.5,55S88,48.508,88,40.5z M63,40.5C63,34.701,67.701,30,73.5,30S84,34.701,84,40.5S79.299,51,73.5,51
       S63,46.299,63,40.5z"></path>
-                </svg></a>
-            </div>
+              </svg></a>
           </div>
-          <div class="dota-rank"><img src="/resources/immortal.png" height="100" width="100" alt=""></div>
         </div>
-        <div class="matches-header">
-          <span class="header-hero">HERO</span>
-          <span class="header-result">RESULT</span>
-          <div class="header-kda">
-            <span>K</span>
-            <span>D</span>
-            <span>A</span>
-          </div>
-          <span class="header-duration">DURATION</span>
+        <div class="dota-rank"><img src="/resources/immortal.png" height="100" width="100" alt=""></div>
+      </div>
+      <div class="matches-header">
+        <span class="header-hero">HERO</span>
+        <span class="header-result">RESULT</span>
+        <div class="header-kda">
+          <span>K</span>
+          <span>D</span>
+          <span>A</span>
         </div>
-        <div class="sidebar-matches">
-          <div v-for="(match, index) in matchesWithHeroIcons" :key="index" class="match">
-            <div class="match-row">
-              <div class="match-row-hero">
-                <span><img :src="match.heroIcon" :alt="match.hero_id"></span>
-                <div class="flex-column">
-                  <span class="hero-name">{{ match.heroName }}</span>
-                  <small class="match-time-ago">{{ formatTimeAgo(match.start_time) }}</small>
-                </div>
+        <span class="header-duration">DURATION</span>
+      </div>
+      <div class="sidebar-matches">
+        <div v-for="(match, index) in matchesWithHeroIcons" :key="index" class="match">
+          <div class="match-row">
+            <div class="match-row-hero">
+              <span><img :src="match.heroIcon" :alt="match.hero_id"></span>
+              <div class="flex-column">
+                <span class="hero-name">{{ match.heroName }}</span>
+                <small class="match-time-ago">{{ formatTimeAgo(match.start_time) }}</small>
               </div>
-              <span :class="['header-result', checkWin(match) ? 'match-won' : 'match-lost']"> {{ checkWin(match) ?
-                'Victory' : 'Defeat' }}
-              </span>
-              <div class="header-kda">
-                <span>{{ match.kills }}</span>
-                <span>{{ match.deaths }}</span>
-                <span>{{ match.assists }}</span>
-              </div>
-              <span class="match-duration">{{ formatDuration(match.duration) }}</span>
             </div>
+            <span :class="['header-result', checkWin(match) ? 'match-won' : 'match-lost']"> {{ checkWin(match) ?
+              'Victory' : 'Defeat' }}
+            </span>
+            <div class="header-kda">
+              <span>{{ match.kills }}</span>
+              <span>{{ match.deaths }}</span>
+              <span>{{ match.assists }}</span>
+            </div>
+            <span class="match-duration">{{ formatDuration(match.duration) }}</span>
           </div>
         </div>
       </div>
-      <div v-else class="loading-container">
-        <h2>Loading...</h2>
-        <div class="spinner"></div>
-      </div>
+      <button class="btn-reload" @click="fetchDota" title="Fetch matches">Reload</button>
     </div>
+    <div v-else class="loading-container">
+      <h2>Loading...</h2>
+      <div class="spinner"></div>
+    </div>
+  </div>
 
 </template>
 
@@ -110,26 +111,49 @@ export default {
         return 'Just now';
       }
     },
+    setWithExpiry(key, value, ttl) {
+      const now = new Date();
+      const item = {
+        value: value,
+        expiry: now.getTime() + ttl,
+      }
+      localStorage.setItem(key, JSON.stringify(item));
+    },
+
+    getWithExpiry(key) {
+      const itemStr = localStorage.getItem(key);
+      if (!itemStr) return null;
+      const item = JSON.parse(itemStr);
+      const now = new Date();
+      if (now.getTime() > item.expiry) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return item.value;
+    },
+
     async fetchDota() {
       try {
-        const fetchMatches = axios.get(`https://api.opendota.com/api/players/377361889/recentMatches`);
-        const fetchProfile = axios.get(`https://api.opendota.com/api/players/377361889/`);
-        const fetchHeroes = axios.get(`https://api.opendota.com/api/heroStats`);
-
-        const [matches, profile, heroes] = await Promise.all([
-          fetchMatches,
-          fetchProfile,
-          fetchHeroes,
+        const [matchesRes, profileRes, heroesRes] = await Promise.all([
+          axios.get(`https://api.opendota.com/api/players/377361889/recentMatches`),
+          axios.get(`https://api.opendota.com/api/players/377361889/`),
+          axios.get(`https://api.opendota.com/api/heroStats`)
         ]);
 
-        this.matches = matches.data;
-        this.profile = profile.data.profile;
-        this.heroeIcons = heroes.data;
+        this.matches = matchesRes.data;
+        this.profile = profileRes.data.profile;
+        this.heroeIcons = heroesRes.data;
+        this.isFetched = true;
+
+        // 💾 Cachear con expiración de 10 minutos (600000 ms)
+        this.setWithExpiry('matches', this.matches, 600000);
+        this.setWithExpiry('profile', this.profile, 600000);
+        this.setWithExpiry('heroStats', this.heroeIcons, 600000);
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     },
-
     async getHeroIcon(id) {
       const hero = this.heroeIcons.find((hero) => hero.id === id); // Busca el héroe por ID
       if (hero) {
@@ -143,8 +167,19 @@ export default {
   },
   async mounted() {
     try {
-      this.loadingData = true;
-      await this.fetchDota();
+      const cachedMatches = this.getWithExpiry('matches');
+      const cachedProfile = this.getWithExpiry('profile');
+      const cachedHeroStats = this.getWithExpiry('heroStats');
+
+      if (cachedMatches && cachedProfile && cachedHeroStats) {
+        this.matches = cachedMatches;
+        this.profile = cachedProfile;
+        this.heroeIcons = cachedHeroStats;
+        this.isFetched = true;
+      } else {
+        this.loadingData = true;
+        await this.fetchDota();
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -169,6 +204,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.btn-reload{
+  background: none;
+  color:white;
+  border:none;
+}
+.btn-reload:hover{
+cursor:pointer;
+}
 .h-100 {
   height: 100%;
   width: 100%;
@@ -357,9 +400,10 @@ svg {
   height: 70svh;
   margin-top: 50px;
   margin-left: 50px;
-  
+
 }
-.sidebar{
+
+.sidebar {
   height: 100%;
   width: 100%;
 }
@@ -373,41 +417,54 @@ img {
   object-fit: contain;
 }
 
-@media (max-width:850px){
-  .left{
-    width:100%;
+@media (max-width:850px) {
+  .left {
+    width: 100%;
     height: calc(100svh - 80px);
     margin: 10px auto;
     background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
   }
-  .sidebar{
+
+  .sidebar {
     padding-top: 10px;
   }
-  .sidebar-matches{
+
+  .sidebar-matches {
     width: 100%;
     height: calc(100% - 120px);
     overflow: auto;
   }
-  .matches-header{
-    gap:5px;
+
+  .matches-header {
+    gap: 5px;
   }
-  .header-hero img{
-    max-width:100%;
+
+  .header-hero img {
+    max-width: 100%;
     object-fit: cover;
   }
-  .header-kda, .header-duration, .header-result, .header-row-kda, .match-duration, .match-result{
+
+  .header-kda,
+  .header-duration,
+  .header-result,
+  .header-row-kda,
+  .match-duration,
+  .match-result {
     width: 15%;
   }
-  .header-duration{
+
+  .header-duration {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .header-hero{
-    width:55%;
+
+  .header-hero {
+    width: 55%;
   }
-  .match-row-hero{
-    width:calc(55% + 10px);
+
+  .match-row-hero {
+    width: calc(55% + 10px);
   }
 }
 </style>

@@ -32,7 +32,9 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
+.nav-logo{
+    opacity: 0.5;    
+}
 .mauto {
     margin: auto;    
     z-index: 1;
@@ -85,7 +87,6 @@ export default {
     /* Color más claro para destacar */
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     z-index: 1;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), /* Sombra general */
     inset 0px -2px 4px rgba(255, 255, 255, 0.1); /* Sombra interior */
     /* Añade sombra para resaltar */
