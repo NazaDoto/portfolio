@@ -4,7 +4,7 @@
     <div  v-for="project in projects" :key="project.name">
       <h3>{{ project.name }}</h3>
       <p>{{ project.description }}</p>
-      <a :href="project.link" target="_blank">Ver Proyecto</a>
+      <a :href="project.link">Ver Proyecto</a>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
         {
           name: 'SNMDS',
           description: 'Sistema de Notificaciones.',
-          link: '/snmds',
+          link: '/sn-mds',
         },
         {
           name: 'SGTS',
