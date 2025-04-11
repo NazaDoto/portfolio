@@ -63,7 +63,7 @@
     align-items: center;
     margin-bottom: 15px;
     padding: 10px;
-    border: (Some code was cut) 1px solid #444444;
+    border:none;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.5);
 
