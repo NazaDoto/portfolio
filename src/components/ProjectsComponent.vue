@@ -28,6 +28,12 @@ export default {
           link: 'https://sn-mds.nazadoto.com',
           img: '/resources/sn-mds.png',
         },
+        {
+          name: 'SGTS',
+          description: 'Tarjetas Sociales management system for the Social Development Ministry of Santiago del Estero.',
+          link: 'https://sgts.nazadoto.com',
+          img: '/resources/sgts.png',
+        },
       ],
     };
   },
