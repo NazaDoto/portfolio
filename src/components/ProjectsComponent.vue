@@ -17,20 +17,26 @@ export default {
     return {
       projects: [
         {
+          name: 'Ministerio de Desarrollo Social - SDE',
+          description: 'WORDPRESS | Government website for the Social Development Ministry of Santiago del Estero.',
+          link: 'http://www.mdssde.gob.ar/',
+          img: '/resources/mds.png',
+        },
+        {
           name: 'Puestito Online',
-          description: 'Display your products and start selling!.',
+          description: 'VUE + EXPRESS | Display your products and start selling!.',
           link: 'https://puestito-online.nazadoto.com',
           img: '/resources/puestito-online.png',
         },
         {
           name: 'SN-MDS',
-          description: 'Notification system for the Social Development Ministry of Santiago del Estero.',
+          description: 'VUE + EXPRESS | Notification system for the Social Development Ministry of Santiago del Estero.',
           link: 'https://sn-mds.nazadoto.com',
           img: '/resources/sn-mds.png',
         },
         {
           name: 'SGTS',
-          description: 'Tarjetas Sociales management system for the Social Development Ministry of Santiago del Estero.',
+          description: 'VUE + EXPRESS | Tarjetas Sociales management system for the Social Development Ministry of Santiago del Estero.',
           link: 'https://sgts.nazadoto.com',
           img: '/resources/sgts.png',
         },
@@ -62,6 +68,9 @@ export default {
   border-radius: 10px;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+}
+.description{
+  font-size: .3rem;
 }
 
 .project-card {
