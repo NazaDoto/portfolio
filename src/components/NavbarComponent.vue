@@ -11,7 +11,7 @@
             <router-link id="about-content" class="nav-left-item nav-item" :class="{ 'active': $route.path === '/about' }"
                 to="/about"><span class="mauto" >ABOUT</span></router-link>
             <router-link id="exp-content" class="nav-left-item nav-item push-left" :class="{ 'active': $route.path === '/experience' }"
-                to="/experience"><span class="mauto" >EXPERIENCE</span></router-link>
+                to="/experience"><span class="mauto" id="exp-contenido" data-short="EXP">EXPERIENCE</span></router-link>
             <router-link id="projects-content" class="nav-left-item nav-item push-left-" :class="{ 'active': $route.path === '/projects' }"
                 to="/projects"><span class="mauto" >PROJECTS</span></router-link>
         </div>
@@ -24,7 +24,14 @@
 </template>
 
 <script>
-
+window.addEventListener("resize", function() {
+  const exp = document.getElementById("exp-contenido");
+  if (window.innerWidth <= 550) {
+    exp.innerText = "EXP";
+  } else {
+    exp.innerText = "EXPERIENCE";
+  }
+});
 export default {
 
 }
@@ -329,31 +336,5 @@ ul {
     }
 }
 @media (max-width:550px){
-    .nav-left{
-        width: 100%;
-        padding:0;
-    }
-    .container-logo, .container-logo-outer{
-        width: 50px;
-        height: 65px;
-    }
-    .container-logo-inner{
-        width: 40px;
-    }
-    #about-content{
-        min-width: 70px;
-    }
-    #exp-content{
-        min-width:130px;
-    }
-    #projects-content{
-        min-width:110px;
-    }
-    .push-left{
-        left:-5px;
-    }
-    .push-left-{
-        left:-15px;
-    }
 }
 </style>

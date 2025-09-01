@@ -28,7 +28,7 @@
           {
             year: '2022 – Now',
             company: 'IT Technician at Ministerio de Desarrollo Social de Santiago del Estero',
-            position: 'IT service (hardware and software maintenance for the employees), structured cabling (cat 6 UTP cable assembly, IP configuration), web application development (control and monitoring of IT supplies using VueJS, ExpressJS, MySQL), database administration (SQL Server).',
+            position: 'Hardware and software maintenance for the employees, web development (VueJS, ExpressJS, MySQL), database administration (SQL Server).',
           },
         ],
       };
@@ -46,7 +46,7 @@
     padding: 15px 15svw;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -64,7 +64,6 @@
     margin-bottom: 15px;
     padding: 10px;
     border:none;
-    border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.5);
 
   }
@@ -84,7 +83,10 @@
   .experience-description {
     font-size: 0.9em;
   }
-
-  
+@media (max-width:850px) {
+.container{
+  padding: 10px 20px;
+}
+}
   </style>
   

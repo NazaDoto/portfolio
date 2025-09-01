@@ -74,9 +74,10 @@ export default {};
 </script>
 
 <style scoped>
-.links{
-    display:none;
+.links {
+    display: none;
 }
+
 li {
     margin-top: 2px;
 }
@@ -240,11 +241,34 @@ li {
         padding: 10px 0;
         border-radius: 0;
         margin-top: 10px;
+        max-height: calc(100svh - 140px) !important;
+        overflow: auto;
     }
 
-    .container-left {
-        min-width: 0;
+    .container::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+        background-color: rgba(13, 126, 0, 0.5);
+        /* Color de la barra */
+        border-radius: 6px;
+    }
+
+    .container::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 54, 5, 0.8);
+        /* Color al pasar el cursor */
+    }
+
+    .container::-webkit-scrollbar-track {
+        background-color: rgba(13, 255, 0, 0.053);
+        /* Color del track */
+    }
+
+    .container-left, .container-right {
+        padding: 0 20px !important;
         max-width: none;
+        width: auto;
     }
 
     .technologies,
@@ -252,13 +276,6 @@ li {
         width: auto;
     }
 
-    .container-left,
-    .container-right {
-        width: 100%;
-        flex-direction: column;
-        margin: auto;
-        padding: 0;
-    }
 
     .img {
         width: calc(100% - 10px);
@@ -279,27 +296,32 @@ li {
         width: 100px;
         height: 100px;
     }
-    .links{
+
+    .links {
         display: flex;
         flex-direction: column;
     }
-    .nav-opt-img{
+
+    .nav-opt-img {
         width: 30px;
         height: 30px;
         filter: invert(100%) brightness(1);
     }
-    .nav-opt-img:hover{
+
+    .nav-opt-img:hover {
         filter: invert(100%) brightness(2);
 
     }
-    .cover{
-        padding: 10px 10%;
+
+    .cover {
+        padding: 10px 10px;
         text-align: justify;
     }
-    .education-content{
+    .education-content {
         height: 100%;
     }
-    .item{
+
+    .item {
         border-radius: 0;
     }
 }

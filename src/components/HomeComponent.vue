@@ -428,6 +428,7 @@ img {
 
   .sidebar {
     padding-top: 10px;
+    max-height: calc(100% - 100px);
   }
 
   .sidebar-matches {

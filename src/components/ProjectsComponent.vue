@@ -52,11 +52,13 @@ export default {
 </script>
 
 <style scoped>
-.name{
+.name {
   font-size: 10px;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.8); /* Sombra para dar profundidad */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.8);
+  /* Sombra para dar profundidad */
 }
+
 .gallery-container {
   display: flex;
   width: 100%;
@@ -69,7 +71,8 @@ export default {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
-.description{
+
+.description {
   font-size: .3rem;
 }
 
@@ -81,8 +84,10 @@ export default {
   cursor: pointer;
   transition: transform 0.3s ease;
   font-size: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), /* Sombra general */
-    inset 0px -2px 4px rgba(255, 255, 255, 0.2); /* Sombra interior */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4),
+    /* Sombra general */
+    inset 0px -2px 4px rgba(255, 255, 255, 0.2);
+  /* Sombra interior */
 }
 
 .project-card:hover {
@@ -102,7 +107,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgb(10, 10, 10), rgba(10, 10, 10,0.7), rgba(10, 10, 10, 0.5), transparent);
+  background: linear-gradient(to top, rgb(10, 10, 10), rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.5), transparent);
   color: white;
   padding: 2px;
   opacity: 0;
@@ -114,5 +119,15 @@ export default {
 .project-card:hover .project-overlay {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 850px) {
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-items: center;
+    border-radius: 0;
+  }
 }
 </style>
