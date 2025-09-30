@@ -79,7 +79,7 @@ export default {
           name: 'POS',
           description:
             'VUE + EXPRESS | Tool for small and medium-sized businesses that leverages GPT-powered artificial intelligence to analyze sales and provide smart recommendations.',
-          link: 'https://pos.nazadoto.com',
+          link: 'https://nazadoto.store',
           img: '/resources/pos.png',
         },
       ],
