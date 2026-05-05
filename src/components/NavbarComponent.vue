@@ -11,7 +11,7 @@
             <router-link id="about-content" class="nav-left-item nav-item" :class="{ 'active': $route.path === '/about' }"
                 to="/about"><span class="mauto" >ABOUT</span></router-link>
             <router-link id="exp-content" class="nav-left-item nav-item push-left" :class="{ 'active': $route.path === '/experience' }"
-                to="/experience"><span class="mauto" id="exp-contenido" data-short="EXP">EXPERIENCE</span></router-link>
+                to="/experience"><span class="mauto">{{ isCompact ? 'EXP' : 'EXPERIENCE' }}</span></router-link>
             <router-link id="projects-content" class="nav-left-item nav-item push-left-" :class="{ 'active': $route.path === '/projects' }"
                 to="/projects"><span class="mauto" >PROJECTS</span></router-link>
         </div>
@@ -24,33 +24,41 @@
 </template>
 
 <script>
-window.addEventListener("resize", function() {
-  const exp = document.getElementById("exp-contenido");
-  if (window.innerWidth <= 550) {
-    exp.innerText = "EXP";
-  } else {
-    exp.innerText = "EXPERIENCE";
-  }
-});
 export default {
-
+    data() {
+        return {
+            isCompact: false,
+        };
+    },
+    mounted() {
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize);
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    },
+    methods: {
+        handleResize() {
+            this.isCompact = window.innerWidth <= 550;
+        },
+    },
 }
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 .nav-logo{
-    opacity: 0.5;    
+    opacity: 0.5;
 }
 .mauto {
     margin: auto;    
     z-index: 1;
     font-family: 'Bebas Neue', sans-serif; /* Fuente similar */
-    font-size: 1.5rem; /* Tamaño de la fuente */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
-    letter-spacing: 2px; /* Espaciado entre letras */
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
-    transition: transform 0.3s ease-in-out; /* Transición suave */
+    transition: color 0.2s ease-in-out;
 }
 
 .active{
@@ -94,8 +102,7 @@ export default {
     /* Color más claro para destacar */
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     z-index: 1;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), /* Sombra general */
-    inset 0px -2px 4px rgba(255, 255, 255, 0.1); /* Sombra interior */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), inset 0px -2px 4px rgba(255, 255, 255, 0.1);
     /* Añade sombra para resaltar */
 }
 
@@ -109,8 +116,7 @@ export default {
     /* Color más oscuro */
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
     z-index: 2;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), /* Sombra general */
-    inset 0px -2px 4px rgba(255, 255, 255, 0.1); /* Sombra interior */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), inset 0px -2px 4px rgba(255, 255, 255, 0.1);
     /* Sombra adicional */
     position: relative;
     /* Necesario para que funcione el pseudo-elemento */
@@ -212,8 +218,7 @@ ul {
     height: 60px;
     padding: 0 50px;
     background-color: rgb(37, 37, 37);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), /* Sombra general */
-    inset 0px -2px 4px rgba(255, 255, 255, 0.1); /* Sombra interior */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), inset 0px -2px 4px rgba(255, 255, 255, 0.1);
 }
 .nav-dota.active::after{
     content: '';
@@ -267,7 +272,7 @@ ul {
     max-width: 200px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: larger;
-    color: grey;    
+    color: grey;
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
 

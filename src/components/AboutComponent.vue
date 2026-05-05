@@ -4,7 +4,7 @@
             <div class="img">
                 <img class="profile-pic" src="../../public/resources/yo.png" alt="">
                 <div class="info">
-                    <span class="name">Nazareno Navarrete</span>
+                    <span class="name">Nazareno<br>Navarrete</span>
                     <span class="title">DEVELOPER</span>
                 </div>
                 <div class="links">
@@ -18,7 +18,7 @@
             </div>
 
             <div class="technologies item">
-                TECHNOLOGIES
+                <h3 class="section-title">Technologies</h3>
                 <div class="radar-chart">
                     <div class="radar-background">
                     </div>
@@ -37,6 +37,7 @@
         </div>
         <div class="container-right">
             <div class="cover item">
+                <h3 class="section-title">Profile</h3>
                 Hello, I’m from Santiago del Estero, Argentina, and I’m an Information Systems Analyst and Fullstack
                 Developer.
 
@@ -44,7 +45,7 @@
                 explore new tools and techniques to enhance my work.
             </div>
             <div class="education item">
-                EDUCATION
+                <h3 class="section-title">Education</h3>
                 <div class="education-content">
                     <ul>
                         <li><strong>Bachelor's in Social Sciences and Humanities:</strong> Colegio San José (2012–2016)
@@ -60,7 +61,8 @@
                 </div>
             </div>
             <div class="languages item">
-                LANGUAGES <ul>
+                <h3 class="section-title">Languages</h3>
+                <ul>
                     <li><strong>Spanish:</strong> Native</li>
                     <li><strong>English:</strong> Professional (CEFR: C1 Advanced)</li>
                 </ul>
@@ -77,9 +79,18 @@ export default {};
 .links {
     display: none;
 }
+.section-title {
+    margin: 0 0 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
 
 li {
     margin-top: 2px;
+    color: white;
 }
 
 .radar-chart-container {
@@ -135,13 +146,15 @@ li {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     color: white;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(2px);
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .container-left {
-    min-width: 375px;
-    max-width: 30%;
+    min-width: 320px;
+    max-width: 38%;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -153,7 +166,7 @@ li {
     height: 100%;
     flex-direction: column;
     gap: 15px;
-    width: 70%;
+    width: 62%;
 }
 
 .item {
@@ -162,12 +175,14 @@ li {
     -webkit-backdrop-filter: blur(2px);
     border-radius: 5px;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .img {
     display: flex;
     gap: 10px;
     height: 100%;
+    align-items: center;
 }
 
 .profile-pic {
@@ -181,6 +196,9 @@ li {
 .info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    flex: 1;
 }
 
 .title {
@@ -189,20 +207,27 @@ li {
 }
 
 .name {
-    width: fit-content;
-    font-size: 2.8rem;
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .cover {}
+.cover {
+    line-height: 1.45;
+}
 
 .education {
     height: 100%;
 }
 
 .education-content {
-    height: 80%;
+    max-height: 280px;
     overflow: auto;
     text-overflow: ellipsis;
+    padding-right: 6px;
 }
 
 .education-content::-webkit-scrollbar {
@@ -226,6 +251,17 @@ li {
     position: relative;
 }
 
+.languages ul,
+.education ul {
+    padding-left: 18px;
+    margin: 8px 0 0;
+}
+
+.languages li,
+.education li {
+    line-height: 1.35;
+}
+
 @media (max-width: 1175px) {
     .container {
         padding: 15px 5svw;
@@ -242,7 +278,8 @@ li {
         border-radius: 0;
         margin-top: 10px;
         max-height: calc(100svh - 140px) !important;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .container::-webkit-scrollbar {
@@ -268,7 +305,8 @@ li {
     .container-left, .container-right {
         padding: 0 20px !important;
         max-width: none;
-        width: auto;
+        width: 100%;
+        min-width: 0;
     }
 
     .technologies,
@@ -287,9 +325,10 @@ li {
     }
 
     .name {
-        width: 50%;
+        width: 100%;
         font-size: 2rem;
         line-break: strict;
+        white-space: nowrap;
     }
 
     .profile-pic {
@@ -316,13 +355,34 @@ li {
     .cover {
         padding: 10px 10px;
         text-align: justify;
+        word-break: break-word;
     }
     .education-content {
-        height: 100%;
+        max-height: none;
     }
 
     .item {
         border-radius: 0;
+    }
+}
+
+@media (max-width:550px) {
+    .container{
+        padding: 8px 0;
+    }
+    .img{
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0;
+    }
+    .profile-pic{
+        width: 92px;
+        height: 92px;
+    }
+    .radar-chart{
+        width: 100%;
+        max-width: 220px;
+        height: 220px;
     }
 }
 </style>

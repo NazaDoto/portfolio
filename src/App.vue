@@ -17,16 +17,23 @@ export default {
 </script>
 
 <style>
+:root {
+  --dota-text: white;
+  --dota-muted: grey;
+}
+
 html {
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 body {
   background-color: rgb(51, 45, 62);
   color: white;
   margin: 0;
+  overflow-x: hidden;
 }
 
 .full-page {
@@ -35,10 +42,12 @@ body {
   background-image: url('/public/resources/rubick-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center top;
   color: inherit;
   display: flex;
   flex-direction: row;
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 @media (max-width:850px) {
@@ -46,6 +55,7 @@ body {
     height: auto;
     min-height: calc(100svh - 60px);
     background-position-x: 70%;
+    overflow-x: hidden;
   }
 }
 </style>
